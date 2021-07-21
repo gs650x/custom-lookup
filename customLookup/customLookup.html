@@ -1,0 +1,38 @@
+<template>
+    <div class="slds-form-element" style={width}>
+        <label class="slds-form-element__label" for="combobox-id-3">{label}</label>
+        <div class="slds-form-element__control">
+            <div class="slds-combobox_container">
+                <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+                    aria-expanded="true" aria-haspopup="listbox" role="combobox">
+                    <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                        <input type="text" class="slds-input slds-combobox__input slds-has-focus" data-id="combo-input"
+                            aria-controls="listbox-id-4" autocomplete="off" role="textbox" disabled={disableInput}
+                            placeholder={placeHolder} value={inputValue} onkeyup={handleInputChange} />
+                        <Button
+                            class="slds-icon_container slds-icon-utility-close slds-input__icon slds-input__icon_right"
+                            style="cursor: pointer; z-index:200; position:absolute" onclick={handleRemoveValue}>
+                            <lightning-icon icon-name="utility:close" size="x-small" alternative-text="Click here"
+                                class="slds-icon slds-icon--selected slds-icon--x-small slds-icon-text-default slds-var-m-right_x-small">
+                            </lightning-icon>
+                        </Button>
+                    </div>
+
+                    <div id="listbox-id-4" role="listbox"
+                        class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid" style={dropdownSelector}>
+                        <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                            <template for:each={optionsToDisplay} for:item="option">
+                                <li role="presentation" key={option.value} class="slds-listbox__item">
+                                    <div class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small"
+                                        role="option" data-id={option.value} onclick={handleSelectedOption}>
+                                        <div class="slds-truncate" title={option.label}>{option.label}</div>
+                                    </div>
+                                </li>
+                            </template>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
