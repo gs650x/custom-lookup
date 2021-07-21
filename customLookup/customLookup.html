@@ -11,7 +11,8 @@
                             placeholder={placeHolder} value={inputValue} onkeyup={handleInputChange} />
                         <Button
                             class="slds-icon_container slds-icon-utility-close slds-input__icon slds-input__icon_right"
-                            style="cursor: pointer; z-index:200; position:absolute" onclick={handleRemoveValue}>
+                            style="cursor: pointer; z-index:200; position:absolute" onclick={handleRemoveValue}
+                            if:true={disableInput}>
                             <lightning-icon icon-name="utility:close" size="x-small" alternative-text="Click here"
                                 class="slds-icon slds-icon--selected slds-icon--x-small slds-icon-text-default slds-var-m-right_x-small">
                             </lightning-icon>

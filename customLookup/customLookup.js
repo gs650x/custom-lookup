@@ -41,8 +41,13 @@ export default class CustomLookup extends LightningElement {
     }
 
     handleSelectedOption(event) {
-        this.inputValue = this.options.find(({ value }) => value == event.target.dataset.id).label;
+        let selectedRecord = this.options.find(({ value }) => value == event.target.dataset.id);
+        this.inputValue = selectedRecord.label;
         this.disableInput = true;
+
+        this.dispatchEvent(new CustomEvent('valuechange', {
+            detail: selectedRecord
+        }))
     }
 
     handleInputChange(event) {
@@ -54,5 +59,9 @@ export default class CustomLookup extends LightningElement {
     handleRemoveValue() {
         this.inputValue = '';
         this.disableInput = false;
+        this.optionsToDisplay = this.options
+        this.dispatchEvent(new CustomEvent('optionremove', {
+            detail: true
+        }))
     }
 }
