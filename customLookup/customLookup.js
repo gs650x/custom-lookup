@@ -1,4 +1,4 @@
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api, track } from 'lwc';
 
 export default class CustomLookup extends LightningElement {
 
@@ -19,7 +19,7 @@ export default class CustomLookup extends LightningElement {
     inputValue = '';
     optionsToDisplay = this.options;
     dropdownSelector = 'display:none';
-    disableInput = false;
+    @track disableInput = false;
 
     connectedCallback() {
         this.optionsToDisplay = this.options
@@ -28,9 +28,12 @@ export default class CustomLookup extends LightningElement {
     //to manage the click to open or close the slds dropdown.
     renderedCallback() {
         let self = this;
+
         this.template.querySelector(`[data-id="combo-input"]`)
             .addEventListener('click', function (event) {
-                self.dropdownSelector = 'display:block';
+                if (!self.disableInput) {
+                    self.dropdownSelector = 'display:block';
+                }
                 //stopping propagation so that below event listner won't handle click event 
                 event.stopPropagation();
 
