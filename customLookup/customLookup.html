@@ -1,4 +1,11 @@
 <template>
+    <div if:true={showTagsContainer} style={width}>
+
+        <lightning-pill-container items={selectedTags} onitemremove={handleTagRemove}>
+        </lightning-pill-container>
+
+    </div>
+
     <div class="slds-form-element" style={width}>
         <label class="slds-form-element__label" for="combobox-id-3">{label}</label>
         <div class="slds-form-element__control">
@@ -7,8 +14,8 @@
                     aria-expanded="true" aria-haspopup="listbox" role="combobox">
                     <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
                         <input type="text" class="slds-input slds-combobox__input slds-has-focus" data-id="combo-input"
-                            aria-controls="listbox-id-4" autocomplete="off" role="textbox"
-                            placeholder={placeHolder} value={inputValue} onkeyup={handleInputChange} />
+                            aria-controls="listbox-id-4" autocomplete="off" role="textbox" placeholder={placeHolder}
+                            value={inputValue} onkeyup={handleInputChange} />
                         <Button
                             class="slds-icon_container slds-icon-utility-close slds-input__icon slds-input__icon_right"
                             onclick={handleRemoveValue} if:true={disableInput}>
